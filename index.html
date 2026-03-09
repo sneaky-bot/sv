@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Letters</title>
+
+<style>
+
+body{
+margin:0;
+font-family:sans-serif;
+background:#2b1d16;
+}
+
+/* sections */
+
+.section{
+position:absolute;
+width:100%;
+height:100vh;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+/* INTRO PAGE */
+
+#intro{
+display:flex;
+background:linear-gradient(135deg,#1a1a1a,#2c2c2c);
+color:white;
+overflow:hidden;
+}
+
+/* center text */
+
+.intro-text{
+text-align:center;
+z-index:2;
+}
+
+.intro-text h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.intro-text p{
+opacity:0.8;
+font-size:18px;
+}
+
+/* HEART */
+
+#heart{
+position:absolute;
+width:120px;
+height:110px;
+background:#ff4d6d;
+cursor:pointer;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-weight:bold;
+font-size:18px;
+}
+
+#heart:before,
+#heart:after{
+content:"";
+position:absolute;
+width:120px;
+height:110px;
+background:#ff4d6d;
+border-radius:50%;
+}
+
+#heart:before{
+top:-60px;
+left:0;
+}
+
+#heart:after{
+left:60px;
+top:0;
+}
+
+#heart span{
+position:absolute;
+z-index:2;
+}
+
+/* DESK */
+
+#desk{
+background:linear-gradient(135deg,#3a2a22,#1c1410);
+display:none;
+overflow:hidden;
+}
+
+.desk-surface{
+position:absolute;
+width:70%;
+height:60%;
+background:#8b5e3c;
+border-radius:10px;
+box-shadow:0 25px 50px rgba(0,0,0,0.6);
+}
+
+/* envelopes */
+
+.envelope{
+position:absolute;
+width:180px;
+height:120px;
+background:#f5e3c3;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:10px;
+cursor:pointer;
+border-radius:6px;
+box-shadow:0 5px 10px rgba(0,0,0,0.4);
+transition:transform 0.3s;
+}
+
+.envelope:hover{
+transform:scale(1.08);
+}
+
+#e1{top:30%;left:30%;}
+#e2{top:35%;right:30%;}
+#e3{bottom:30%;left:35%;}
+#e4{bottom:28%;right:32%;}
+#e5{top:45%;left:45%;}
+
+/* LETTER PAGE */
+
+.letter{
+background:#f5e3c3;
+padding:40px;
+text-align:left;
+overflow-y:auto;
+}
+
+/* letter text */
+
+.letter-text{
+max-width:900px;
+line-height:1.7;
+margin-bottom:25px;
+margin-left:auto;
+margin-right:auto;
+font-size:17px;
+}
+
+/* whenever page layout */
+
+#whenever{
+display:none;
+padding:60px;
+overflow-y:auto;
+column-count:2;
+column-gap:60px;
+height:100vh;
+box-sizing:border-box;
+}
+
+#whenever p{
+break-inside:avoid;
+}
+
+#whenever h1{
+column-span:all;
+margin-bottom:40px;
+}
+
+/* media size fix */
+
+video,img{
+width:60%;
+max-width:500px;
+max-height:350px;
+object-fit:contain;
+border-radius:10px;
+margin-bottom:30px;
+box-shadow:0 6px 15px rgba(0,0,0,0.4);
+}
+
+/* button */
+
+button{
+padding:12px 25px;
+cursor:pointer;
+border:none;
+background:#8b5e3c;
+color:white;
+border-radius:6px;
+font-size:15px;
+}
+
+button:hover{
+background:#6f472e;
+}
+
+/* surprise animation */
+
+.kiss{
+position:fixed;
+font-size:24px;
+animation:fall 2s linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-50px);
+opacity:1;
+}
+100%{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<div id="intro" class="section" style="display:flex">
+
+<div class="intro-text">
+<h1>From Vedhuu to Sammuu</h1>
+<p>Catch the heart</p>
+</div>
+
+<div id="heart">
+<span>Vedhuu</span>
+</div>
+
+</div>
+
+<!-- DESK -->
+
+<div id="desk" class="section">
+
+<div class="desk-surface"></div>
+
+<div class="envelope" id="e1" onclick="openLetter('missme')">
+Open when you miss me
+</div>
+
+<div class="envelope" id="e2" onclick="openLetter('sad')">
+Open when you feel sad
+</div>
+
+<div class="envelope" id="e3" onclick="openLetter('happy')">
+Open when you feel happy
+</div>
+
+<div class="envelope" id="e4" onclick="openLetter('motivation')">
+Open when you need motivation
+</div>
+
+<div class="envelope" id="e5" onclick="openLetter('whenever')">
+Open whenever you want
+</div>
+
+</div>
+
+<!-- MISS ME -->
+
+<div id="missme" class="section letter">
+
+<h1>Open when you miss me</h1>
+
+<p class="letter-text">
+IF YOU'RE READING THIS, IT PROBABLY MEANS YOU'RE MISSING ME A LITTLE.
+I JUST WANT YOU TO KNOW THAT I MISS YOU TOO, PROBABLY MORE OFTEN THAN I SAY.SOMETIMES I RANDOMLY REMEMBER THINGS ABOUT YOU — THE WAY YOU TALK, LAUGH WHEN I SAY SOMETHING FUNNY
+,OR THE THINGS YOU SAY,THE CONVOS WE HAVE,THE THINGS YOU CALL MEEE WHICHHH ARE VERYYY CUTEEEEE AND THINGS YOU TELL ABOUT ME WHICH NEVER FAIL TO TEAR ME UP,ALLL THESE THINGS ALWAYS MAKEEE ME SMILEEE.
+EVEN IF WE’RE NOT TOGETHER RIGHT NOW, JUST REMEMBER THAT YOU’RE ALWAYS ON MY MIND AND I CARE ABOUT YOU MORE THAN YOU KNOW.
+I STILL REMEMBER OUR COVERSATIONS INITIALLY OH GOD YOU COME TO MY MIND EVERY CHEMISTRY CLASS.
+I SOMETIMES THINK OF OUR LIFE AFTER 10-12 YEARS AND I FEEL LIKE I CANT WAIT FOR TIME TO 
+PASS QUICKLYY AND I JUST WISH WE FAST FORWARD TILL THERE.
+</p>
+
+<video controls>
+<source src="videos/video1.mp4">
+</video>
+
+<br>
+
+<button onclick="back()">Back</button>
+
+</div>
+
+<!-- SAD -->
+
+<div id="sad" class="section letter">
+
+<h1>Open when you feel sad</h1>
+
+<p class="letter-text">
+IF YOU HAVE OPENED THIS,MAYBE TODAY WAS NOT ONE OF THOSE GOOD DAYS.
+ITS COMPLETELY OKAY TO FEEL SAD SOMETIMES.YOU DONT ALWAYS HAVE TO BE STRONG ENOUGH TO MAKE IT FINE SOMETIMES.
+ONE THING I REALLY ADMIRE ABOUT YOUU IS YOUR STRENGTH ON HOW YOU FACE THESE THINGS AND BE LIKE ITS CHILD PLAY
+YOU'RE THE STRONGEST GIRL AND YOU ARE SOO MUCH MORE STRONGER THAN YOU THINK AND YOU'VE GOTTEN THROUGH SO MANY THINGS BEFORE.
+NO MATTER WHAT YOU MIGHT BE FEELING RIGHT NOW,THINGS WILL GET BETTER AND EVERY BAD THING WILL GO AWAY,
+JUST REMEMBER I'LL ALWAYS BE SOMEONE WHO CARES ABOUT YOU,WHO LOVES YOU,WHO IS PROUD OF EVERYTHING ABOUT YOUUU,WHO IS ALSO VERY VERY OBSSESSED WITH YOUU.
+</p>
+
+<img src="images/photo1.jpeg">
+
+<br>
+
+<button onclick="back()">Back</button>
+
+</div>
+
+<!-- HAPPY -->
+
+<div id="happy" class="section letter">
+
+<h1>Open when you feel happy</h1>
+
+<p class="letter-text">
+IF YOU ARE READING THISS THAT MEANS YOU ARE HAPPY,THEN THAT HAS ALREADY MADE ME SMILE
+I JUST WANT YOU TO KNOW THAT YOU BEING HAPPY MAKES ME SOOO MUCH MORE HAPPIER.
+YOUU BEING HAPPYYY SUITS YOUUU VERYY WELLL.
+YOUUU ALWAYSS DESERVEE TO BE HAPPYYYY.
+FOR THE PERSON YOUU AREEE IT ONLY MAKES SENSE YOU'RE HAPPY ALL THEE TIMEEE.
+IT WILL BE 100000000000 TIMES BETTER IF I PLAYED SOME SMALL PART IN THAT HAPPINESS.
+SOO KEEP DOINGS THINGS WHICH WILL MAKE YOUU SMILEEEE.
+KEEPING YOU HAPPYY IS ONE OF MY END GOALS IN LIFE
+</p>
+
+<video controls>
+<source src="videos/video2.mp4">
+</video>
+
+<br>
+
+<button onclick="back()">Back</button>
+
+</div>
+
+<!-- MOTIVATION -->
+
+<div id="motivation" class="section letter">
+
+<h1>Open when you need motivation</h1>
+
+<p class="letter-text">
+IF YOU'RE READING THIS,YOU PROBABLY NEED A LITTLE MOTIVATION RIGHT NOW.  
+THINGS MIGHT FEEL DIFFICULT OR OVERWHELMING, BUT THAT DOESN'T MEAN YOU'RE NOT CAPABLE OF HANDLING THEM.
+YOU’RE SMARTER, STRONGER, AND MORE CAPABLE THAN YOU SOMETIMES BELIEVE.
+I STILL REMEMBER ALL YOU PAINTINGS ESPECIALLY THE STARRY NIGHTS MY GOD I DONT THINK ANYONE WILL BE ABLE TO POINT OUT DIFFERENCES BETWEEN THE ORIGINAL.
+OTHER THINGS I ADMIRE ABOUT YOU IS HOW YOU HELP ME AND BE SUPPORTIVE WITH MY STUDIES.
+I JUST KNOW NO MATTER THE CHALLENGE YOU WILL ALWAYS MANAGE TO BE WIN.
+AS YOU HAVE THOUGHT ME,PROGRESS DOESN'T HAVE TO BE PERFECT TO MATTER.
+JUST TAKE THINGS ONE STEP AT A TIME, KEEP MOVING FORWARD, AND DON'T FORGET THAT YOU’RE CAPABLE OF DOING AMAZING THINGS.
+I BELIEVE IN YOUUUU ON EVERY STEP ON YOUR JOURNEY AND I KNOW YOU ARE GOING TO DO GREAT THINGS IF YOU JUST KEEP GOING.
+</p>
+
+<img src="images/photo2.jpeg">
+
+<br>
+
+<button onclick="back()">Back</button>
+
+</div>
+
+<!-- OPEN WHENEVER PAGE (UNCHANGED TEXT) -->
+
+<div id="whenever" class="section letter">
+
+<h1>Open when you miss me extra</h1>
+
+<p class="letter-text">SOOO SAMMMUUU I REMEMBER WE WERE TALKING ABOUT THAT GRATITUDE BAR YESTERDAY SOOO THATS WHERE I GOT THIS IDEA FROM.
+SOOOO I JUST THOUGHT I'LL ADD ALL THE THINGS THAT I HAVE WRITTEN AND SENT WHICH GOT YOU REALLY HAPPY IN ONE PLACE SOOO THAT'LL BE GOOOD.
+I LOVEEEE YOUUUUUUU SOOOOOOOOO MUCHHHHHHHHH.</p>
+
+<p class="letter-text">HEYYY SAMMUUU THIS IS SURPRISE FOR YOUUU BECAUSE I LOVEEE YOUUU SOOOO MUCHHHHH, IM OBSSESED WITH YOU LIKE WAYY TOOO MUCHHH,I THINK ABOUT YOU EVERYTIME AND EVERYWHERE I GO IT FEELS LIKE WHEREVER I GO OR WHATEVER I DO WITH YOU IT'LL THE BEST. I CAN'T IMAGINE ANYTHING GOOD IN MY LIFE WITHOUTT YOUUU, I WANT YOU TO BE A PART OF EVERYTHING GOOD THAT WOULD HAPPEN IN MY LIFE. MOST IMPORTANTLY I WANT TO BE A PART OF YOUR LIFE EVERY SECOND EVERY MINUTE EVERY HOUR EVERY DAY,I WANT TO BE THERE FOR YOU WHEN YOU ACHEIVE IT ALL AND IN YOUR GOOD TIMES AND ALSO IN YOUR BAD TIMES. I WILL NEVER GET TIRED OF COMPLIMENTING YOU AND TRYING TO MAKE YOU HAPPY, YOUR EYES ARE THE MOST BEAUTIFUL ONES,MORE THAN STARING AT THE SUNSET I WOULD PREFER WATCHING YOUR EYES. YOUR PERSONALITY IS UNMATCHABLE NO ONE IN THIS WORLD CAN BE AS INTRESTING AS YOU AND AT THE SAME TIME AS BEAUTIFUL. EVERY LOVE SONG I LISTEN REMINDS ME OF US,EVERY CUTE THING I SEE IN COUPLES IN MOVIES OR REELS IT REMINDS ME OF USS. I CAN'T WAIT FOR US TO LIVE LIFE,AND FOR ME LIVING LIFE MEANS GOING OUT WITH YOUU WHEN WE MARRIED,USS GOING TO BEAUTIFUL COUNTRIES AND US SHARING SUNSETS IN THE MOUNTAINS,FEEDING YOU YOUR FAVIOURITE FOODS,READING YOUR FAVOURITE BOOKS,LYING ON YOUR SHOULDER WHEN I WATCH A MOVIE GETTING TO ADMIRE YOU ALL DAY,WATCHING YOU IN A WHITE COAT AS A NEUROSURGEON WILL SURELY MAKE ME FAINT BY YOUR BEAUTY, WATCHING SPORTS WITH YOUU,GIVING YOU A TIGHT HUG,COOKING FOR YOU,MAKING YOU COFFEE,TAKING YOU OUT ON LIBRARY DATES AND ICE CREAM DATES AND ARCADE DATES WHERE I WILL BEAT YOU IN BOWLING, OHH GODD I CAN'T WAIT FOR US TO BE MARRIED,I FEEL LIKE IM GNA START LIVING MY LIFE WHEN WE BECOME ONE OFFICIALLY. IT WILL BE SUCH A FLEX ON PEOPLE BY SAYING LOOK AT MY 10/10 CUTIEPIE NEURSOSURGEON WIFE(ALTHOUGH THEY ARENT ALLOWED TO LOOK AT YOU AND ADMIRE YOUU). I WANNA BE THE ONLY ONE FOR YOUU BABYYY,I WANT YOU TO BE ALL MINEEEE. YOU'RE LITERALLY THE BEST AND THE MOST SUPPORTIVE,YOU HELPED ME WITH MY ACADEMICS AND I KNOW I CAN ALWAYS TURN TO MY BABY WHENEVER I NEED HELP. WE MET EACH OTHER AT THE MOST BUSIEST TIME OF OUR LIVES OR MAYBE THIS IS NOT THE MOST BUSIEST BUT A VERY IMPORTANT PHASE,BUT IT'S OKAYY BECAUSE WE WILL NEVER GIVE UP ON EACH OTHER AND I WANT YOU TO BE WITH ME TILL THE END OF OUR LIFE. I CAN'T TELL YOU HOW MUCH PERFECT ARE YOU,YOURE THE BEST THING IN THIS UNIVERSE AND THE PRETTIEST CREATURE(NOT EVEN SNOW LEOPARDS ARE PRETTIER THAN YOU) WHENEVER I READ OUR OLD CHATS I REALISE HOW MUCH I WAS BLUSHING BEFORE EACH MESSAGE AND HOW MUCH EACH YOUR COMPLIMENTS MEAN TO MEEE. WHEN YOU GAVE ME THAT CUTE NICKNAME I FELT SOMETHING I NEVER FELT BEFORE,IT FELT MORE LIKE A VOICE WARNING ME DON'T YOU EVER MAKE HER SAD OR LEAVE HER. 14TH FEBRUARY HAS BEEN THE BEST DAY OF MY LIFE AND IT'S ALL BECAUSE OF YOUUU,THE PICTURES YOU SENT,THE THINGS YOU WROTE,THEY MEAN SOO MUCH TO MEE. THEY MAYBE JUST A LENGTHY PARAGRAPH FOR OTHERS BUT FOR ME THATS MY WORLD,YOURE MY WORLD,MY HOMEE,MY PRINCESS,MY BABYY,MY WIFEYYY,THE MOTHER OF OUR DAUGHTER. MWWWWUUUUUAAAAAAHHHHHHHHHHHHHHHHHHHH</p>
+
+<p class="letter-text">Heyyy SAMMMMM
+there was no ocassion to send this but i just felt likedoingthisrandomly
+YOU'RE THE BESTTT 😁😁🤭🤭
+IT FEELS SOO SURREAL THE BOND WE'VE BUILT IN 3 MONTHS NO WAIT IT WAS 2 AND HALF MONTHS😁😁, I'M SOO GRATEFUL FOR HAVING A PERFECT GIRL AS YOUUUU BY MY SIDEEE AND HOPEFULLY WE ALWAYS REMAIN BY EACH OTHER'S SIDEEE🤭🤭😋😁.YOU'RE LIKE THE PRETTIEST GIRLLL IN MY WORLD😤🤭😁💋,IT FEELS LIKE GOD SAVED THE PRETTIEST SET OF EYES FOR YOUU 😁😁,OMGGG THE PHOTOS AND VIDEOS YOU'VE SENT ME LITERALLY MAKE MY DAY,OMGGG YOU'RE SO GORGEOUS AND EVERYTIME I DO THIS I FEEL HOW I LUCKY I AM TO EXIST IN THE SAME TIME AS YOUU DO😁😁🤭🤭, HOPEFULLY WE GET TOO DOO ALL THE THINGS WE TALK ABOUT ESPECIALLY THAT PAINTING WLA THING WHERE I'LL BE HAVING ONE HALF OF IT AND YOU'LL BE HAVING THE OTHER HALFF🤭🤭🥹🥹😋💋, YOU'RE THE LOVE I WISH EVERYONE I KNOW GETS SOMETHING SIMILAR LIKE THIS, BECAUSE YOU'RE MINEE AND ONLYYY MYY PRINCESSSSS 🤭🤭💖💖🫶🏻🫶🏻🌷,I LOVEEEEEE YOUUUUUU SOOOO MUCHHHHH 💋🫶🏻🌷💖🤍💐</p>
+
+<p class="letter-text">
+</p>
+
+<p class="letter-text">
+
+</p>
+
+<br>
+
+<button onclick="surprise()">SURPRISE</button>
+
+<br><br>
+
+<button onclick="back()">Back</button>
+
+</div>
+
+<script>
+
+const heart=document.getElementById("heart");
+
+heart.style.left="60px";
+heart.style.top=(window.innerHeight/2)+"px";
+
+function moveHeart(){
+
+let x=Math.random()*(window.innerWidth-200);
+let y=Math.random()*(window.innerHeight-200);
+
+if(x>window.innerWidth/2-200 && x<window.innerWidth/2+200){
+x=Math.random()<0.5?50:window.innerWidth-150;
+}
+
+heart.style.transition="all 0.7s ease";
+heart.style.left=x+"px";
+heart.style.top=y+"px";
+
+}
+
+setInterval(moveHeart,1000);
+
+heart.onclick=function(){
+document.getElementById("intro").style.display="none";
+document.getElementById("desk").style.display="flex";
+}
+
+function openLetter(id){
+document.getElementById("desk").style.display="none";
+document.getElementById(id).style.display="flex";
+}
+
+function back(){
+document.querySelectorAll(".letter").forEach(e=>e.style.display="none");
+document.getElementById("desk").style.display="flex";
+}
+
+function surprise(){
+
+for(let i=0;i<80;i++){
+
+let el=document.createElement("div");
+el.className="kiss";
+
+el.innerHTML=Math.random()>0.5 ? "💋" : "❤️";
+
+el.style.left=Math.random()*100+"vw";
+el.style.animationDuration=(1+Math.random()*2)+"s";
+
+document.body.appendChild(el);
+
+setTimeout(()=>{
+el.remove();
+},2000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
