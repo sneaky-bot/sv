@@ -126,27 +126,30 @@ cursor:pointer;
 border-radius:6px;
 box-shadow:0 5px 10px rgba(0,0,0,0.4);
 transition:transform 0.3s;
-overflow:hidden;  
+overflow:hidden;
+z-index:2;
 }
 
-/* envelope flap */
+.envelope span{
+position:relative;
+z-index:5;
+}
 
-.envelope::before{
-content:"";
+
+.envelope::after{
+z-index:1;
+}
+
+.envelope{
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#e8d2a8;
-clip-path:polygon(0 0,100% 0,50% 60%);
-transform-origin:top;
-transition:transform 0.6s ease;
+z-index:2;
 }
 
-.envelope.open::before{
-transform:rotateX(180deg);
+.envelope span{
+position:relative;
+z-index:3;
 }
+
 
 /* sliding letter */
 
@@ -341,24 +344,24 @@ animation:shakeScreen 0.7s;
 
 <div class="desk-surface"></div>
 
-<div class="envelope" id="e1" onclick="openLetter('missme')">
-Open when you miss me
+<div class="envelope" id="e1" onclick="openLetter('missme', this)">
+Open when you miss me</span>
 </div>
 
-<div class="envelope" id="e2" onclick="openLetter('sad')">
-Open when you feel sad
+<div class="envelope" id="e2" onclick="openLetter('sad', this)">
+Open when you feel sad</span>
 </div>
 
-<div class="envelope" id="e3" onclick="openLetter('happy')">
-Open when you feel happy
+<div class="envelope" id="e3" onclick="openLetter('happy', this)">
+Open when you feel happy</span>
 </div>
 
-<div class="envelope" id="e4" onclick="openLetter('motivation')">
-Open when you need motivation
+<div class="envelope" id="e4" onclick="openLetter('motivation', this)">
+Open when you need motivation</span>
 </div>
 
-<div class="envelope" id="e5" onclick="openLetter('whenever')">
-Open whenever you want
+<div class="envelope" id="e5" onclick="openLetter('whenever', this)">
+Open when you miss me little more</span>
 </div>
 
 </div>
@@ -546,9 +549,9 @@ document.getElementById("intro").style.display="none";
 document.getElementById("desk").style.display="flex";
 });
 
-function openLetter(id){
+function openLetter(id, element){
 
-event.currentTarget.classList.add("open");
+element.classList.add("open");
 
 setTimeout(function(){
 document.getElementById("desk").style.display="none";
@@ -607,6 +610,7 @@ el.remove();
 </body>
 
 </html>
+
 
 
 
