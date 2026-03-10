@@ -126,6 +126,7 @@ cursor:pointer;
 border-radius:6px;
 box-shadow:0 5px 10px rgba(0,0,0,0.4);
 transition:transform 0.3s;
+overflow:hidden;  
 }
 
 /* envelope flap */
@@ -145,6 +146,26 @@ transition:transform 0.6s ease;
 
 .envelope.open::before{
 transform:rotateX(180deg);
+}
+
+/* sliding letter */
+
+.envelope::after{
+content:"";
+position:absolute;
+bottom:-10px;
+left:10%;
+width:80%;
+height:90%;
+background:white;
+border-radius:4px;
+transform:translateY(60px);
+transition:transform 0.6s ease;
+box-shadow:0 4px 8px rgba(0,0,0,0.2);
+}
+
+.envelope.open::after{
+transform:translateY(-20px);
 }  
 
 .envelope:hover{
@@ -481,6 +502,7 @@ IT FEELS SOO SURREAL THE BOND WE'VE BUILT IN 3 MONTHS NO WAIT IT WAS 2 AND HALF 
 <script>
 
 const heart=document.getElementById("heart");
+heart.style.display="flex";  
 
 heart.style.left="60px";
 heart.style.top=(window.innerHeight/2)+"px";
@@ -531,7 +553,7 @@ event.currentTarget.classList.add("open");
 setTimeout(function(){
 document.getElementById("desk").style.display="none";
 document.getElementById(id).style.display="flex";
-},500);
+},600);
 
 }
 
@@ -580,13 +602,12 @@ el.remove();
 
 }
 
-}
-
 </script>
 
 </body>
 
 </html>
+
 
 
 
