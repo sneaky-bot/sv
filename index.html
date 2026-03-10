@@ -15,13 +15,14 @@ background:#2b1d16;
 /* sections */
 
 .section{
-position:absolute;
+position:absolute;  
 width:100%;
 height:100vh;
 display:none;
-justify-content:center;
+justify-content:flex-start;
 align-items:center;
 flex-direction:column;
+overflow-y:auto;
 }
 
 /* INTRO PAGE */
@@ -421,6 +422,21 @@ function moveHeart(){
 let x=Math.random()*(window.innerWidth-200);
 let y=Math.random()*(window.innerHeight-200);
 
+document.addEventListener("mousemove",function(e){
+
+const rect=heart.getBoundingClientRect();
+
+const heartX=rect.left+rect.width/2;
+const heartY=rect.top+rect.height/2;
+
+const distance=Math.hypot(e.clientX-heartX,e.clientY-heartY);
+
+if(distance<150){
+moveHeart();
+}
+
+});  
+
 if(x>window.innerWidth/2-200 && x<window.innerWidth/2+200){
 x=Math.random()<0.5?50:window.innerWidth-150;
 }
@@ -431,7 +447,7 @@ heart.style.top=y+"px";
 
 }
 
-setInterval(moveHeart,1000);
+setInterval(moveHeart,700);
 
 heart.onclick=function(){
 document.getElementById("intro").style.display="none";
@@ -450,12 +466,13 @@ document.getElementById("desk").style.display="flex";
 
 function surprise(){
 
-for(let i=0;i<80;i++){
+for(let i=0;i<120;i++){
 
 let el=document.createElement("div");
 el.className="kiss";
 
-el.innerHTML=Math.random()>0.5 ? "💋" : "❤️";
+const emojis=["💋","❤️","💖","💗","💘","💕","🌹","🌸","🌺","🌷","💐","💍","✨"];
+el.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
 
 el.style.left=Math.random()*100+"vw";
 el.style.animationDuration=(1+Math.random()*2)+"s";
@@ -473,4 +490,5 @@ el.remove();
 </script>
 
 </body>
+
 </html>
