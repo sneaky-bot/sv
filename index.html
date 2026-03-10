@@ -75,6 +75,7 @@ width:120px;
 height:110px;
 background:#ff4d6d;
 border-radius:50%;
+pointer-events:none;
 }
 
 #heart:before{
@@ -127,6 +128,25 @@ box-shadow:0 5px 10px rgba(0,0,0,0.4);
 transition:transform 0.3s;
 }
 
+/* envelope flap */
+
+.envelope::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#e8d2a8;
+clip-path:polygon(0 0,100% 0,50% 60%);
+transform-origin:top;
+transition:transform 0.6s ease;
+}
+
+.envelope.open::before{
+transform:rotateX(180deg);
+}  
+
 .envelope:hover{
 transform:scale(1.08);
 }
@@ -139,12 +159,27 @@ transform:scale(1.08);
 
 /* LETTER PAGE */
 
+/* LETTER PAGE */
+
 .letter{
 background:#f5e3c3;
 padding:40px;
 text-align:left;
 overflow-y:auto;
+animation:openLetter 0.6s ease;
+transform-origin:top;
 }
+
+@keyframes openLetter{
+0%{
+transform:scaleY(0);
+opacity:0;
+}
+100%{
+transform:scaleY(1);
+opacity:1;
+}
+}  
 
 /* letter text */
 
@@ -290,7 +325,7 @@ I SOMETIMES THINK OF OUR LIFE AFTER 10-12 YEARS AND I FEEL LIKE I CANT WAIT FOR 
 PASS QUICKLYY AND I JUST WISH WE FAST FORWARD TILL THERE.
 </p>
 
-<video controls>
+<video autoplay loop muted playsinline controls>
 <source src="videos/video1.mp4">
 </video>
 
@@ -340,7 +375,7 @@ SOO KEEP DOINGS THINGS WHICH WILL MAKE YOUU SMILEEEE.
 KEEPING YOU HAPPYY IS ONE OF MY END GOALS IN LIFE
 </p>
 
-<video controls>
+<video autoplay loop muted playsinline controls>
 <source src="videos/video2.mp4">
 </video>
 
@@ -445,20 +480,26 @@ const heartY=rect.top+rect.height/2;
 
 const distance=Math.hypot(e.clientX-heartX,e.clientY-heartY);
 
-if(distance<150){
+if(distance<120 && distance>40){
 moveHeart();
 }
 
 });  
 
-heart.onclick=function(){
+heart.addEventListener("click",function(){
 document.getElementById("intro").style.display="none";
 document.getElementById("desk").style.display="flex";
-}
+});
 
 function openLetter(id){
+
+event.currentTarget.classList.add("open");
+
+setTimeout(function(){
 document.getElementById("desk").style.display="none";
 document.getElementById(id).style.display="flex";
+},500);
+
 }
 
 function back(){
@@ -494,4 +535,5 @@ el.remove();
 </body>
 
 </html>
+
 
