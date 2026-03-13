@@ -697,7 +697,46 @@ document.getElementById("wishList").appendChild(li);
 
 input.value="";
 }
-  
+
+let wishes = JSON.parse(localStorage.getItem("wishes")) || [];
+
+function displayWishes() {
+
+    const list = document.getElementById("wishList");
+    list.innerHTML = "";
+
+    wishes.forEach(function(wish) {
+
+        let li = document.createElement("li");
+        li.textContent = wish;
+
+        list.appendChild(li);
+
+    });
+
+}
+
+function addWish() {
+
+    let input = document.getElementById("wishInput");
+    let wishText = input.value.trim();
+
+    if (wishText !== "") {
+
+        wishes.push(wishText);
+
+        localStorage.setItem("wishes", JSON.stringify(wishes));
+
+        input.value = "";
+
+        displayWishes();
+
+    }
+
+}
+
+window.onload = displayWishes;
+
 </script>
 
 </body>
