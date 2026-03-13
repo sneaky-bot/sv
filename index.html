@@ -180,7 +180,12 @@ transform:scale(1.08);
 #e3{bottom:30%;left:35%;}
 #e4{bottom:28%;right:32%;}
 #e5{top:45%;left:45%;}
-
+  
+#wishlistBtn{
+top:65%;
+left:45%;
+background:#ffe4ec;
+}
 /* LETTER PAGE */
 
 /* LETTER PAGE */
@@ -364,6 +369,11 @@ Open when you need motivation</span>
 Open when you miss me little more</span>
 </div>
 
+<div class="envelope" id="wishlistBtn" onclick="openLetter('wishlist', this)">
+Wishlist
+  
+</div>
+
 </div>
 
 <!-- MISS ME -->
@@ -543,6 +553,26 @@ WE'RE SOO DIFFERENT IN ALMOST EVERYTHING BUT I LOVE THE FACT THAT WE HAVE SHARED
 
 </div>
 
+<!-- WISHLIST PAGE -->
+
+<div id="wishlist" class="section letter">
+
+<h1>Our Wishlist</h1>
+
+<div style="margin-bottom:20px;">
+<input type="text" id="wishInput" placeholder="Write a wish..."
+style="padding:10px;width:250px;border-radius:6px;border:none;">
+<button onclick="addWish()">Add</button>
+</div>
+
+<ul id="wishList" style="list-style:none;padding:0;font-size:18px;"></ul>
+
+<br>
+
+<button onclick="back()">Back</button>
+
+</div>
+
 <script>
 
 const heart=document.getElementById("heart");
@@ -645,7 +675,29 @@ el.remove();
 },120);
 
 }
+function addWish(){
 
+let input=document.getElementById("wishInput");
+let text=input.value.trim();
+
+if(text==="") return;
+
+let li=document.createElement("li");
+
+li.style.marginBottom="10px";
+
+li.innerHTML=`
+<label>
+<input type="checkbox">
+${text}
+</label>
+`;
+
+document.getElementById("wishList").appendChild(li);
+
+input.value="";
+}
+  
 </script>
 
 </body>
